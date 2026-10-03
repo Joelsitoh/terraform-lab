@@ -1,12 +1,18 @@
 # Terraform Hands-on Lab
 
-Infraestructura con Terraform y Docker para los ambientes DEV y QA.
+En este laboratorio utilicé Terraform con el proveedor de Docker para desplegar dos ambientes, DEV y QA, cada uno con un frontend, un backend y una base de datos PostgreSQL.
+
+## Stack
+
+- **Frontend:** nginx, sirve el `index.html` por defecto en el puerto 80.
+- **Backend:** node, responde un mensaje en el puerto 3000.
+- **BD:** PostgreSQL en el puerto 5432.
 
 | Servicio | DEV | QA |
 |---|---|---|
-| web (nginx) | 4001:80 | 5001:80 |
-| api (node) | 4002:3000 | 5002:3000 |
-| bd (postgresql) | 4003:5432 | 5003:5432 |
+| web (nginx) | web-dev 4001:80 | web-qa 5001:80 |
+| api (node) | api-dev 4002:3000 | api-qa 5002:3000 |
+| bd (postgresql) | bd-dev 4003:5432 | bd-qa 5003:5432 |
 
 ## Requisitos
 
@@ -60,3 +66,17 @@ docker ps
 terraform workspace select dev
 terraform destroy -auto-approve
 ```
+
+Para eliminar QA, reemplazar `dev` por `qa`.
+
+## Conventional Commits
+
+Los cambios se registraron con el formato `tipo: descripción`. El historial se puede consultar con:
+
+```bash
+git log --oneline
+```
+
+## Créditos
+
+- Joel Francisco Mariñas Rios
